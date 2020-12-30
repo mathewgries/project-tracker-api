@@ -5,7 +5,7 @@ custom:
   sstAppMapping:
     prod: prod
     dev: dev
-  sstApp: ${self:custom.sstAppMapping.${self:custom.stage}, self:custom.sstAppMapping.dev}-notes-ext-infra
+  sstApp: ${self:custom.sstAppMapping.${self:custom.stage}, self:custom.sstAppMapping.dev}-project-tracker-infra
 
 lambdaPolicyXRay:
   Effect: Allow

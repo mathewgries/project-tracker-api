@@ -8,10 +8,14 @@ export async function main(event, context) {
     TableName: process.env.tableName,
     Item: {
       userId: event.requestContext.identity.cognitoIdentityId,
-      noteId: uuid.v1(),
-      content: data.content,
-      attachment: data.attachment,
-      createdAt: Date.now()
+      projectId: uuid.v1(),
+      projectName: data.projectName,
+      projectDescription: data.projectDescription || null,
+      projectTodos: data.projectTodos || [],
+      isActive: data.isActive || true,
+      attachment: data.attachment || null,
+      createdAt: Date.now(),
+      modifiedAt: Date.now()
     }
   };
 

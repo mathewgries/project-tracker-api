@@ -1,4 +1,4 @@
-service: project-tracker-api
+service: projects-api
 
 plugins:
   - serverless-bundle
@@ -22,7 +22,7 @@ provider:
   # under process.env.
   environment:
     stage: ${self:custom.stage}
-    tableName: !ImportValue ${self:custom.sstApp}-TableName
+    tableName: !ImportValue ${self:custom.sstApp}-Projects
 
   iamRoleStatements:
     - ${file(../../serverless.common.yml):lambdaPolicyXRay}
@@ -38,7 +38,7 @@ provider:
       # Restrict our IAM role permissions to
       # the specific table for the stage
       Resource:
-        - !ImportValue ${self:custom.sstApp}-TableArn
+        - !ImportValue ${self:custom.sstApp}-Projects
 
 functions:
   create:
@@ -97,7 +97,7 @@ resources:
         Value:
           Ref: ApiGatewayRestApi
         Export:
-          Name: ${self:custom.stage}-ApiGatewayRestApiId
+          Name: ${self:custom.stage}-ProjectsApiGatewayRestApiId
     
       ApiGatewayRestApiRootResourceId:
         Value:
@@ -105,5 +105,5 @@ resources:
             - ApiGatewayRestApi
             - RootResourceId 
         Export:
-          Name: ${self:custom.stage}-ApiGatewayRestApiRootResourceId
+          Name: ${self:custom.stage}-ProjectsApiGatewayRestApiRootResourceId
 

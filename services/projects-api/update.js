@@ -5,9 +5,6 @@ export async function main(event, context) {
   const data = JSON.parse(event.body);
   const params = {
     TableName: process.env.tableName,
-    // 'Key' defines the partition key and sort key of the item to be updated
-    // - 'userId': Identity Pool identity id of the authenticated user
-    // - 'noteId': path parameter
     Key: {
       userId: event.requestContext.identity.cognitoIdentityId,
       projectId: event.pathParameters.id

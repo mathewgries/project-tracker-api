@@ -22,7 +22,7 @@ provider:
   # under process.env.
   environment:
     stage: ${self:custom.stage}
-    tableName: !ImportValue ${self:custom.sstApp}-Projects
+    tableName: !ImportValue ${self:custom.sstApp}-ProjectsTableName
 
   iamRoleStatements:
     - ${file(../../serverless.common.yml):lambdaPolicyXRay}
@@ -38,7 +38,7 @@ provider:
       # Restrict our IAM role permissions to
       # the specific table for the stage
       Resource:
-        - !ImportValue ${self:custom.sstApp}-Projects
+        - !ImportValue ${self:custom.sstApp}-ProjectsTableArn
 
 functions:
   create:

@@ -15,8 +15,8 @@ export async function main(event, context) {
       isActive: data.isActive,
       attachment: data.attachment || null,
       createdAt: Date.now(),
-      modifiedAt: Date.now()
-    }
+      modifiedAt: Date.now(),
+    },
   };
 
   try {

@@ -22,7 +22,7 @@ export async function main(event, context) {
       ":projectName": data.projectName,
       ":projectDescription": data.projectDescription || null,
       ":projectTodos": data.projectTodos || [],
-      ":isActive": data.isActive || true,
+      ":isActive": data.isActive,
       ":attachment": data.attachment || null
     },
     // 'ReturnValues' specifies if and how to return the item's attributes,

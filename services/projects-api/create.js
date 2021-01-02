@@ -12,7 +12,7 @@ export async function main(event, context) {
       projectName: data.projectName,
       projectDescription: data.projectDescription || null,
       projectTodos: data.projectTodos || [],
-      isActive: data.isActive || true,
+      isActive: data.isActive,
       attachment: data.attachment || null,
       createdAt: Date.now(),
       modifiedAt: Date.now()

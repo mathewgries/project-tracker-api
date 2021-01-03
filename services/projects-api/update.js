@@ -16,7 +16,7 @@ export const main = handler(async (event, context) => {
     projectDescription = :projectDescription,
     projectTodos = :projectTodos,
     isActive = :isActive,
-    attachment = :attachment
+    attachment = :attachment,
     modifiedAt = :modifiedAt`,
     ExpressionAttributeValues: {
       ":projectName": data.projectName,

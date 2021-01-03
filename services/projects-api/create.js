@@ -1,8 +1,8 @@
+import handler from "../../libs/handler-lib";
 import uuid from "uuid";
 import dynamoDb from "../../libs/dynamodb-lib";
-import { success, failure } from "../../libs/response-lib";
 
-export async function main(event, context) {
+export const main = handler(async (event, context) => {
   const data = JSON.parse(event.body);
   const params = {
     TableName: process.env.tableName,
@@ -18,12 +18,7 @@ export async function main(event, context) {
       modifiedAt: Date.now(),
     },
   };
+  await dynamoDb.put(params);
 
-  try {
-    await dynamoDb.put(params);
-    return success(params.Item);
-  } catch (e) {
-    console.log(e);
-    return failure({ status: false });
-  }
-}
+  return params.Item;
+});

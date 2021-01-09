@@ -1,5 +1,5 @@
 create:
-  handler: create.main
+  handler: groups/create.main
   events:
     - http:
         path: groups
@@ -8,7 +8,7 @@ create:
         authorizer: aws_iam
 
 get:
-  handler: get.main
+  handler: groups/get.main
   events:
     - http:
         path: groups/{id}
@@ -17,7 +17,7 @@ get:
         authorizer: aws_iam
 
 list:
-  handler: list.main
+  handler: groups/list.main
   events:
     - http:
         path: groups
@@ -26,7 +26,7 @@ list:
         authorizer: aws_iam
 
 update:
-  handler: update.main
+  handler: groups/update.main
   events:
     - http:
         path: groups/{id}
@@ -35,7 +35,7 @@ update:
         authorizer: aws_iam
 
 delete:
-  handler: delete.main
+  handler: groups/delete.main
   events:
     - http:
         path: groups/{id}

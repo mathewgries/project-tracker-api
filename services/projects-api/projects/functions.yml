@@ -1,5 +1,5 @@
 create:
-  handler: create.main
+  handler: projects/create.main
   events:
     - http:
         path: projects
@@ -8,7 +8,7 @@ create:
         authorizer: aws_iam
 
 get:
-  handler: get.main
+  handler: projects/get.main
   events:
     - http:
         path: projects/{id}
@@ -17,7 +17,7 @@ get:
         authorizer: aws_iam
 
 list:
-  handler: list.main
+  handler: projects/list.main
   events:
     - http:
         path: projects
@@ -26,7 +26,7 @@ list:
         authorizer: aws_iam
 
 update:
-  handler: update.main
+  handler: projects/update.main
   events:
     - http:
         path: projects/{id}
@@ -35,7 +35,7 @@ update:
         authorizer: aws_iam
 
 delete:
-  handler: delete.main
+  handler: projects/delete.main
   events:
     - http:
         path: projects/{id}

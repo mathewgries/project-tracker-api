@@ -13,3 +13,9 @@ lambdaPolicyXRay:
     - xray:PutTraceSegments
     - xray:PutTelemetryRecords
   Resource: "*"
+
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
+  # Cognito Identity Pool Policy
+  - ${file(resources/cognito-policy.yml)}

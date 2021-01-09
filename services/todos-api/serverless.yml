@@ -1,4 +1,4 @@
-service: projects-api
+service: todos-api
 
 plugins:
   - serverless-bundle
@@ -22,7 +22,7 @@ provider:
   # under process.env.
   environment:
     stage: ${self:custom.stage}
-    tableName: !ImportValue ${self:custom.sstApp}-ProjectsTableName
+    tableName: !ImportValue ${self:custom.sstApp}-TodosTableName
 
   iamRoleStatements:
     - ${file(../../serverless.common.yml):lambdaPolicyXRay}
@@ -38,14 +38,14 @@ provider:
       # Restrict our IAM role permissions to
       # the specific table for the stage
       Resource:
-        - !ImportValue ${self:custom.sstApp}-ProjectsTableArn
+        - !ImportValue ${self:custom.sstApp}-TodosTableArn
 
 functions:
   create:
     handler: create.main
     events:
       - http:
-          path: projects
+          path: todos
           method: post
           cors: true
           authorizer: aws_iam
@@ -54,7 +54,7 @@ functions:
     handler: get.main
     events:
       - http:
-          path: projects/{id}
+          path: todos/{id}
           method: get
           cors: true
           authorizer: aws_iam
@@ -63,7 +63,7 @@ functions:
     handler: list.main
     events:
       - http:
-          path: projects
+          path: todos
           method: get
           cors: true
           authorizer: aws_iam
@@ -72,7 +72,7 @@ functions:
     handler: update.main
     events:
       - http:
-          path: projects/{id}
+          path: todos/{id}
           method: put
           cors: true
           authorizer: aws_iam
@@ -81,7 +81,7 @@ functions:
     handler: delete.main
     events:
       - http:
-          path: projects/{id}
+          path: todos/{id}
           method: delete
           cors: true
           authorizer: aws_iam
@@ -97,7 +97,7 @@ resources:
         Value:
           Ref: ApiGatewayRestApi
         Export:
-          Name: ${self:custom.stage}-ProjectsApiGatewayRestApiId
+          Name: ${self:custom.stage}-TodosApiGatewayRestApiId
     
       ApiGatewayRestApiRootResourceId:
         Value:
@@ -105,5 +105,5 @@ resources:
             - ApiGatewayRestApi
             - RootResourceId 
         Export:
-          Name: ${self:custom.stage}-ProjectsApiGatewayRestApiRootResourceId
+          Name: ${self:custom.stage}-TodosApiGatewayRestApiRootResourceId
 

@@ -12,19 +12,16 @@ export const main = handler(async (event, context) => {
     // 'UpdateExpression' defines the attributes to be updated
     // 'ExpressionAttributeValues' defines the value in the update expression
     UpdateExpression: `SET
-    groupId = :groupId,
+    projectId = :projectId,
     title = :title,
-    description = :description,
-    isActive = :isActive,
     position = :position,
-    attachment = :attachment,
+    isActive = :isActive,
     modifiedAt = :modifiedAt`,
     ExpressionAttributeValues: {
-      ":projectName": data.projectName,
-      ":projectDescription": data.projectDescription || null,
-      ":projectTodos": data.projectTodos || [],
+      ":projectId": data.projectId,
+      ":title": data.title,
+      ":position": data.position,
       ":isActive": data.isActive,
-      ":attachment": data.attachment || null,
       ":modifiedAt": Date.now(),
     },
     // 'ReturnValues' specifies if and how to return the item's attributes,

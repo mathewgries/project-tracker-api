@@ -12,18 +12,12 @@ export const main = handler(async (event, context) => {
     // 'UpdateExpression' defines the attributes to be updated
     // 'ExpressionAttributeValues' defines the value in the update expression
     UpdateExpression: `SET
-    groupId = :groupId,
     title = :title,
-    description = :description,
-    isActive = :isActive,
     position = :position,
-    attachment = :attachment,
     modifiedAt = :modifiedAt`,
     ExpressionAttributeValues: {
-      ":projectName": data.projectName,
-      ":projectDescription": data.projectDescription || null,
-      ":projectTodos": data.projectTodos || [],
-      ":isActive": data.isActive,
+      ":title": data.title,
+      ":position": data.position,
       ":attachment": data.attachment || null,
       ":modifiedAt": Date.now(),
     },
